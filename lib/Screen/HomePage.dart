@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-
 import 'WelcmePage.dart';
 
 class AHomePage extends StatefulWidget {
@@ -62,7 +61,7 @@ class _AHomePageState extends State<AHomePage> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
-
+                  obscureText: true,
                   // validator: (value){
                   //   if(value.isEmpty){
                   //     return "@ Required";
@@ -74,7 +73,7 @@ class _AHomePageState extends State<AHomePage> {
                   //     return "Password should be less than 15 char";
                   //   }
                   //   else
-                  //     return null;
+                  //     return null;n
                   // },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
