@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
+import 'WelcmePage.dart';
+
 class AHomePage extends StatefulWidget {
   @override
   _AHomePageState createState() => _AHomePageState();
 }
 
 class _AHomePageState extends State<AHomePage> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+   // GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +19,8 @@ class _AHomePageState extends State<AHomePage> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          autovalidate: true,
+          // autovalidate: true,
+          autovalidateMode: AutovalidateMode.always,
           key: formKey,
           child: Column(
             children: <Widget>[
@@ -81,6 +85,7 @@ class _AHomePageState extends State<AHomePage> {
                       RequiredValidator(errorText: "Required"),
                       MinLengthValidator(6, errorText: "min 6 char long"),
                       MaxLengthValidator(15, errorText: "Not more than 15 char"),
+                     PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: "password must have at least one special character")
                     ]),
                 ),
               ),
@@ -93,6 +98,10 @@ class _AHomePageState extends State<AHomePage> {
                     onPressed: (){
                       if(formKey.currentState.validate()){
                         print("Valid input");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => WelcomeScreen()));
                       }
                       else{
                         print("Invalid inputs");
